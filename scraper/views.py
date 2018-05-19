@@ -208,9 +208,16 @@ class StatPlots(TemplateView):
 
 # REST Framework views
 
-class LocationList(generics.ListAPIView):
+class LocationList(generics.ListCreateAPIView):
     queryset = Location.objects.all()
     serializer_class = LocationSerializer
+
+    def post(self, request, format=None):
+        serializer = SnippetSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class LocationDetail(generics.RetrieveAPIView):
@@ -218,19 +225,20 @@ class LocationDetail(generics.RetrieveAPIView):
     serializer_class = LocationSerializer
 
 
-class SnapshotList(generics.ListAPIView):
+class SnapshotList(generics.ListCreateAPIView):
     queryset = Snapshot.objects.all()
     serializer_class = SnapshotSerializer
 
 
-class SnapshotDetail(generics.RetrieveAPIView):
+class SnapshotDetail(generics.RetrieveDestroyAPIView):
     queryset = Snapshot.objects.all()
     serializer_class = SnapshotSerializer
 
 
-class StatList(generics.ListAPIView):
+class StatList(generics.ListCreateAPIView):
     queryset = Stat.objects.all()
     serializer_class = StatSerializer
+
 
 class StatDetail(generics.RetrieveAPIView):
     queryset = Stat.objects.all()
