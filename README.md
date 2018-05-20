@@ -1,9 +1,12 @@
 # Veturilo Statistics
 
-Backend by [Wojtek Rymaszewski](https://github.com/wrymaszewski)
+By [Wojtek Rymaszewski](https://github.com/wrymaszewski)
 
 ## Summary
 Veturilo is a net of public bikes in Warsaw, Poland. However useful, sometimes it is difficult to predict the number of bikes and free stands at a given time and location. This Django app will perform cyclic scraping of the Veturilo website (https://www.veturilo.waw.pl/mapa-stacji/) to retrieve, and store the real-time data. Data can be then visualized using interactive plots and with the application of machine learning, predictions will be possible.
+
+The app in reality will consist of two sub-apps. The first one, [Gatherer](https://github.com/wrymaszewski/veturilo_gatherer) will perform cyclic scraping and send the data to the [UI app](https://github.com/wrymaszewski/veturilo_gatherer) using json. It will also periodically clean the database of the UI app and fetch raw data to perform computations.
+This is in development. Working app having all functionalities on a single server is available here: <https://github.com/wrymaszewski/veturilo>. It also includes a working REST-API.
 
 ## Technologies/libraries
 * Python
@@ -19,9 +22,9 @@ Veturilo is a net of public bikes in Warsaw, Poland. However useful, sometimes i
 ## To do
 - [x] Web scraper
 - [x] Interactive plots
-- [ ] Machine learning module
-- [ ] Frontend
+- [x] Frontend
 - [ ] Deployment
+- [ ] Machine learning module
 
 ## CLI commands
 
