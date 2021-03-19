@@ -9,7 +9,7 @@ colorama==0.3.7
 decorator==4.3.0
 Django==2.0.5
 django-location-field==2.0.3
-djangorestframework==3.8.2
+djangorestframework==3.11.2
 docker==2.6.1
 docker-pycreds==0.2.3
 dockerpty==0.4.1
